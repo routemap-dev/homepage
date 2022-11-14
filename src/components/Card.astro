@@ -10,25 +10,20 @@ const { link, title } = Astro.props;
 {
   !!link ? (
     <a class="card has-link" href={link}>
-      <h2>
-        {title}
-      </h2>
+      <h2>{title}</h2>
       <div>
         <slot />
       </div>
     </a>
   ) : (
     <div class="card">
-      <h2>
-        {title}
-      </h2>
+      <h2>{title}</h2>
       <div>
         <slot />
       </div>
     </div>
   )
 }
-
 
 <style lang="scss">
   .card {
@@ -45,7 +40,7 @@ const { link, title } = Astro.props;
     background-color: var(--foreground);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
       0 2px 4px -2px rgba(0, 0, 0, 0.1);
-    
+
     &.has-link {
       cursor: pointer;
 
