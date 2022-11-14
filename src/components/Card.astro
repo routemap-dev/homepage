@@ -7,17 +7,32 @@ export interface Props {
 const { link, title } = Astro.props;
 ---
 
-<div class:list={["card", { "has-link": !!link }]}>
-  <h2>
-    {title}
-  </h2>
-  <div>
-    <slot />
-  </div>
-</div>
+{
+  !!link ? (
+    <a class="card has-link" href={link}>
+      <h2>
+        {title}
+      </h2>
+      <div>
+        <slot />
+      </div>
+    </a>
+  ) : (
+    <div class="card">
+      <h2>
+        {title}
+      </h2>
+      <div>
+        <slot />
+      </div>
+    </div>
+  )
+}
+
 
 <style lang="scss">
   .card {
+    display: block;
     max-width: 400px;
     padding: 2rem;
     border-radius: 0.5rem;
@@ -35,7 +50,7 @@ const { link, title } = Astro.props;
       cursor: pointer;
 
       &:is(:hover, :focus-within) h2 {
-        color: rgb(var(--accent));
+        color: var(--accent);
       }
     }
 
